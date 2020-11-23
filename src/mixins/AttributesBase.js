@@ -2,16 +2,16 @@ const axios = require('axios');
 const _ = require('lodash');
 const getAccessToken = require('./../utils/getAccessToken');
 
-const entitiesBase = {
+const attributesBase = {
 
-    async listAll(body) {
+    async listAll(entity, body) {
         // Get Access Token
         const accessToken = await getAccessToken(this.authOptions);
 
         let _body = _.isEmpty(body) ? {} : body;
 
         let axiosConfig = {
-            url: this.url,
+            url: `${this.url}entity/${entity}/${this.name}`,
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -25,4 +25,4 @@ const entitiesBase = {
     },
 };
 
-module.exports = entitiesBase;
+module.exports = attributesBase;
