@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const camelCase = require('lodash/camelCase');
+const url = require('url');
 const generateAuthorization = require('./utils/generateAuthorization');
 
 class Intelligence {
@@ -14,16 +15,17 @@ class Intelligence {
                 url: config.tokenEndpoint,
                 method: 'POST',
                 headers: {
-                    Authorization: generateAuthorization(config.username, config.password)
+                    Authorization: generateAuthorization(config.clientId, config.clientSecret)
                 }
             };
 
-            this.system = {};
+            let apiHostname = url.parse(config.tokenEndpoint).hostname.replace('auth', 'api');
+            this.apiHost = `https://${apiHostname}/v1/`;
 
             fs.readdirSync(path.join(__dirname, 'api')).forEach(name => {
                 let prop = camelCase(name.slice(0, -3));
                 let Resource = require(`./api/${name}`);
-                this.system[prop] = new(Resource)(this.authOptions);
+                this[prop] = new(Resource)(this.authOptions, this.apiHost);
             });
 
         } else {
