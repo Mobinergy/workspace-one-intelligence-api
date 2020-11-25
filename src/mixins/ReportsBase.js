@@ -4,6 +4,34 @@ const getAccessToken = require('./../utils/getAccessToken');
 
 const reportsBase = {
 
+    async listAll(config) {
+        let accessToken = '';
+        let _body = {};
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        _body = _.isEmpty(config) ? {} : config;
+
+        let axiosConfig = {
+            url: `${this.url}search`,
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            data: _body
+        };
+
+        let response = await axios(axiosConfig);
+        return response.data;
+    },
+
     async create(config) {
         let accessToken = '';
 
