@@ -117,6 +117,30 @@ const reportsBase = {
         let response = await axios(axiosConfig);
         return response.data;
     },
+
+    async download(reportTrackingId, config) {
+        let accessToken = '';
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        let axiosConfig = {
+            url: `${this.url}tracking/${reportTrackingId}/download`,
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        let response = await axios(axiosConfig);
+        return response.data;
+    },
 };
 
 module.exports = reportsBase;
