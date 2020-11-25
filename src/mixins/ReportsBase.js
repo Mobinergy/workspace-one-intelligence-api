@@ -89,6 +89,34 @@ const reportsBase = {
             return 'There is something wrong with schedule report config!';
         }
     },
+
+    async searchDownloads(reportId, config) {
+        let accessToken = '';
+        let _body = {};
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        _body = _.isEmpty(config) ? {} : config;
+
+        let axiosConfig = {
+            url: `${this.url}${reportId}/downloads/search`,
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            data: _body
+        };
+
+        let response = await axios(axiosConfig);
+        return response.data;
+    },
 };
 
 module.exports = reportsBase;
