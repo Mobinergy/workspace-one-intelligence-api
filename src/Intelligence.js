@@ -4,6 +4,7 @@ const path = require('path');
 const camelCase = require('lodash/camelCase');
 const url = require('url');
 const generateAuthorization = require('./utils/generateAuthorization');
+const getAccessToken = require('./utils/getAccessToken');
 
 class Intelligence {
 
@@ -31,6 +32,10 @@ class Intelligence {
         } else {
             console.log('Oops! there is something wrong with the config.');
         }
+    }
+
+    async getAccessToken() {
+        return await getAccessToken(this.authOptions);
     }
 }
 

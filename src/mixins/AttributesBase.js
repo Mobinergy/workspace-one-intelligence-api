@@ -4,11 +4,19 @@ const getAccessToken = require('./../utils/getAccessToken');
 
 const attributesBase = {
 
-    async listAll(entity, body) {
-        // Get Access Token
-        const accessToken = await getAccessToken(this.authOptions);
+    async listAll(entity, config) {
+        let _body = {};
+        let accessToken = '';
 
-        let _body = _.isEmpty(body) ? {} : body;
+        if (config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        _body = _.isEmpty(config) ? {} : config;
 
         let axiosConfig = {
             url: `${this.url}entity/${entity}/${this.name}`,
