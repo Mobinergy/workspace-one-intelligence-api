@@ -8,7 +8,7 @@ const attributesBase = {
         let _body = {};
         let accessToken = '';
 
-        if (config.token) {
+        if (config && config.token) {
             accessToken = config.token;
             delete config.token;
         } else {

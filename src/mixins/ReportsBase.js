@@ -7,7 +7,7 @@ const reportsBase = {
     async create(config) {
         let accessToken = '';
 
-        if (config.token) {
+        if (config && config.token) {
             accessToken = config.token;
             delete config.token;
         } else {
@@ -15,7 +15,7 @@ const reportsBase = {
             accessToken = await getAccessToken(this.authOptions);
         }
 
-        if (config.name && config.integration && config.entity && config.column_names) {
+        if (config && config.name && config.integration && config.entity && config.column_names) {
             config.filter = config.filter ? config.filter : '';
 
             let axiosConfig = {
@@ -33,6 +33,30 @@ const reportsBase = {
         } else {
             return 'There is something wrong with create reports config!';
         }
+    },
+
+    async run(reportId, config) {
+        let accessToken = '';
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        let axiosConfig = {
+            url: `${this.url}${reportId}/run`,
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        let response = await axios(axiosConfig);
+        return response.data;
     },
 };
 
