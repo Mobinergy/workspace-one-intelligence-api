@@ -197,6 +197,59 @@ const reportsBase = {
         let response = await axios(axiosConfig);
         return response.data;
     },
+
+    async setRecipients(reportId, config) {
+        let accessToken = '';
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        if (config && config.recipients && config.recipients.length > 0) {
+            let axiosConfig = {
+                url: `${this.url}${reportId}/recipients`,
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                },
+                data: config
+            };
+
+            let response = await axios(axiosConfig);
+            return response.data;
+        } else {
+            return 'There is something wrong with set report recipients config!';
+        }
+    },
+
+    async getRecipients(reportId, config) {
+        let accessToken = '';
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        let axiosConfig = {
+            url: `${this.url}${reportId}/recipients`,
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        let response = await axios(axiosConfig);
+        return response.data;
+    },
 };
 
 module.exports = reportsBase;
