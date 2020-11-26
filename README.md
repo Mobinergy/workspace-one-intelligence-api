@@ -3,16 +3,16 @@ Workspace One Intelligence REST APIs client for Node.js
 
 ## Table of Contents
 
-- [Getting Started](#Getting Started)
+- [Getting Started](#getting-started)
 - [Installing](#Installing)
-- [Quick example](#Quick example)
+- [Quick example](#quick-example)
 - [Configs](#Configs)
 - [Methods](#Methods)
     - [Entities](#Entities)
     - [Attributes](#Attributes)
     - [Metrics](#Metrics)
     - [Report](#Report)
-- [Access Token](#Access Token)
+- [Access Token](#access-token)
 - [Resources](#Resources)
 - [License](#License)
 
