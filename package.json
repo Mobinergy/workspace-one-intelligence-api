@@ -1,14 +1,31 @@
 {
   "name": "workspace-one-intelligence-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Workspace One Intelligence API client for Nodejs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yaaqoub/workspace-one-intelligence-api.git"
+  },
+  "keywords": [
+    "workspace one",
+    "workspace one intelligence",
+    "api",
+    "wsone",
+    "intelligence",
+    "promise",
+    "node",
+    "wrapper"
+  ],
+  "author": "Yaaqoub Semlali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yaaqoub/workspace-one-intelligence-api/issues"
+  },
+  "homepage": "https://github.com/Yaaqoub/workspace-one-intelligence-api",
   "dependencies": {
     "axios": "0.21.0",
     "lodash": "4.17.20"
