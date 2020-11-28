@@ -1,6 +1,6 @@
 {
   "name": "workspace-one-intelligence-api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Workspace One Intelligence API client for Nodejs",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yaaqoub/workspace-one-intelligence-api.git"
+    "url": "https://github.com/Mobinergy/workspace-one-intelligence-api.git"
   },
   "keywords": [
     "workspace one",
@@ -18,14 +18,15 @@
     "intelligence",
     "promise",
     "node",
-    "wrapper"
+    "wrapper",
+    "Mobinergy"
   ],
   "author": "Yaaqoub Semlali",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Yaaqoub/workspace-one-intelligence-api/issues"
+    "url": "https://github.com/Mobinergy/workspace-one-intelligence-api/issues"
   },
-  "homepage": "https://github.com/Yaaqoub/workspace-one-intelligence-api",
+  "homepage": "https://github.com/Mobinergy/workspace-one-intelligence-api",
   "dependencies": {
     "axios": "0.21.0",
     "lodash": "4.17.20"
