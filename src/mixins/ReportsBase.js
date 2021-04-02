@@ -250,6 +250,40 @@ const reportsBase = {
         let response = await axios(axiosConfig);
         return response.data;
     },
+
+    async delete(reportIds, config) {
+        let accessToken = '';
+        let _body = {
+            identifiers: []
+        };
+
+        if (config && config.token) {
+            accessToken = config.token;
+            delete config.token;
+        } else {
+            // Get Access Token
+            accessToken = await getAccessToken(this.authOptions);
+        }
+
+        if (Array.isArray(reportIds)) {
+            _body.identifiers = reportIds;
+        } else {
+            _body.identifiers.push(reportIds);
+        }
+
+        let axiosConfig = {
+            url: `${this.urlV2}`,
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            data: _body
+        };
+
+        let response = await axios(axiosConfig);
+        return response.data;
+    }
 };
 
 module.exports = reportsBase;

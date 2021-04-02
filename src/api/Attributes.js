@@ -2,7 +2,7 @@ let attributesBase = require('./../mixins/AttributesBase');
 
 function Attributes(authOptions, apiHost) {
     this.name = 'attributes';
-    this.url = `${apiHost}metadata/`;
+    this.url = `${apiHost.v1}metadata/`;
 
     this.authOptions = authOptions;
 }

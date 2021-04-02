@@ -2,7 +2,7 @@ let metricsBase = require('./../mixins/MetricsBase');
 
 function Metrics(authOptions, apiHost) {
     this.name = 'metrics';
-    this.url = `${apiHost}${this.name}/`;
+    this.url = `${apiHost.v1}${this.name}/`;
 
     this.authOptions = authOptions;
 }

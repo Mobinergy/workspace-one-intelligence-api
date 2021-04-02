@@ -21,7 +21,10 @@ class Intelligence {
             };
 
             let apiHostname = url.parse(config.tokenEndpoint).hostname.replace('auth', 'api');
-            this.apiHost = `https://${apiHostname}/v1/`;
+            this.apiHost = {
+                v1: `https://${apiHostname}/v1/`,
+                v2: `https://${apiHostname}/v2/`
+            };
 
             fs.readdirSync(path.join(__dirname, 'api')).forEach(name => {
                 let prop = camelCase(name.slice(0, -3));

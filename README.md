@@ -45,7 +45,8 @@ intelligence.entities.listAll()
         console.log(response);
     })
     .catch((err) => {
-        console.log(err)
+        // console.log(err.response.data);
+        console.log(err);
     });
 
 // Using async/await
@@ -267,6 +268,7 @@ intelligence.entities.listAll({
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -295,6 +297,7 @@ intelligence.attributes.listAll('airwatch.adminuser', {
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -323,6 +326,7 @@ intelligence.metrics.simpleTimeRange({
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -353,6 +357,7 @@ intelligence.metrics.histogram({
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -386,6 +391,7 @@ intelligence.metrics.rollingWindow({
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -405,6 +411,7 @@ intelligence.reports.listAll({
 }).then((response) => {
     console.log(response.data);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -440,6 +447,7 @@ intelligence.reports.create({
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -452,6 +460,7 @@ intelligence.reports.run(reportId[, config])
 intelligence.reports.run('006efb72-514c-4569-8a35-0510287ee68d').then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -475,6 +484,7 @@ intelligence.reports.schedule('006efb72-514c-4569-8a35-0510287ee68d', {
 }).then((response) => {
     console.log(response.data);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -490,6 +500,7 @@ intelligence.reports.searchDownloads('006efb72-514c-4569-8a35-0510287ee68d', {
 }).then((response) => {
     console.log(response.data);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -502,6 +513,7 @@ intelligence.reports.download(reportTrackingId[, config])
 intelligence.reports.download('d54df1bf-2924-482e-9e19-b8e3d716f46c').then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -523,6 +535,7 @@ intelligence.reports.preview('006efb72-514c-4569-8a35-0510287ee68d', {
 }).then((response) => {
     console.log(response.data);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -540,6 +553,7 @@ intelligence.reports.setRecipients('006efb72-514c-4569-8a35-0510287ee68d', {
 }).then((response) => {
     console.log(response.data);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -552,6 +566,26 @@ intelligence.reports.getRecipients(reportId[, config])
 intelligence.reports.getRecipients('006efb72-514c-4569-8a35-0510287ee68d').then((response) => {
     console.log(response.data);
 }).catch((err) => {
+    // console.log(err.response.data);
+    console.log(err);
+});
+```
+
+- Delete Report:
+```js
+intelligence.reports.delete(reportIds[, config])
+```
+```js
+intelligence.reports.delete('006efb72-514c-4569-8a35-0510287ee68d').catch((err) => {
+    // console.log(err.response.data);
+    console.log(err);
+});
+```
+```js
+intelligence.reports.delete(
+    ['006efb72-514c-4569-8a35-0510287ee68d', 'id2', 'id(n)']
+).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -568,6 +602,7 @@ If you are planing to use this package on an application and execute many reques
 intelligence.getAccessToken().then((token) => {
     console.log(token);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
@@ -579,6 +614,7 @@ intelligence.entities.listAll({
 }).then((response) => {
     console.log(response);
 }).catch((err) => {
+    // console.log(err.response.data);
     console.log(err);
 });
 ```
